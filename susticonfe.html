@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.ajax({
+    	type: "GET",
+        url: '/CategoryRestService/FindAll',
+        dataType: 'application/json',
+        
+   		success: function(result){
+        
+        	var table = document.getElementById("myTable");
+            $each(resul, function(i, obj){
+            
+            	alert(obj.name);
+            	var row = table.insertRow(0);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+				cell1.innerHTML = obj.id;
+                cell2.innerHTML = obj.name;
+            
+            });
+        }
+                
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Elementos desde Spring</h2></div>
+
+<button>Get External Content</button>
+<table id="myTable">
+
+</table>
+
+</body>
+</html>
